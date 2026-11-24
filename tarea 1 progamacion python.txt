@@ -1,40 +1,74 @@
-1. C�mo podemos concatenar un n�mero a un string? (.5 punto)
-se supone que no te deja poner un numero con texto, entonces se pone primero un "str()" en lugar del numero. Por ejemplo "Hoy+es+lunes+str(28)
+# 1. ¿Cómo podemos concatenar un número a un string?
+# Convertimos el número a texto con str() y concatenamos con +.
+dia = 28
+mensaje = "Hoy es lunes " + str(dia)
+print(mensaje)  # Hoy es lunes 28
 
-2. De qu� tipo son las variables justifica la respuesta (1.5 puntos)
- a = "1" str poque lo que va entre comillas es percibido como texto 
- b = 1.0 float 
- c = 1.5 + True float tod que tenga decimal se considera float y al sumarlo con un booleano se tiene que orecisar al punto decimal 
- d = 1.5 + 2.5 float lo mismo que el anterior 
- e = 1 + True int porque el "true" es percibido como 1 y hace una operacion con numeros enteros 
- f = False + True int false seria 0 y true seria 1 y es una operacion matematica 
- g = True * 0 int igual es una operacion de numeros enteros 
+# 2. ¿De qué tipo son las variables? Justifica tu respuesta.
+a = "1"          # str: está entre comillas, así que es una cadena.
+b = 1.0          # float: tiene punto decimal.
+c = 1.5 + True   # float: True vale 1; el resultado es 2.5.
+d = 1.5 + 2.5    # float: la suma es 4.0.
+e = 1 + True     # int: True vale 1; el resultado es 2.
+f = False + True # int: False vale 0 y True vale 1; el resultado es 1.
+g = True * 0     # int: True vale 1; el resultado es 0.
 
-3. Manipulando la variable palabra (concatenando y con los m�todos de strings), convertirla (2 puntos)
- a. cambiar algunas letras por n�meros
-	palabra = "hola" 
-	en "Ho14"
- b. remover espacios
-	palabra = "  hola"
-	en "hola"
- c. cambiar may�sculas y min�sculas
-    palabra = "HoLa"
-	en "hOlA"
- d. poner la primera en may�scula
-	palabra = "hola"
-	en "Hola"
-no entendi muy bien que hacer 
+print(type(a), type(b), type(c), type(d), type(e), type(f), type(g))
+# 3. Manipulando la variable palabra
+
+# a. Cambiar algunas letras por números: "hola" -> "Ho14"
+palabra = "hola"
+palabra = palabra.replace("o", "1").replace("a", "4").capitalize()
+print(palabra)  # Ho14
+
+# b. Remover espacios al principio y al final: "  hola" -> "hola"
+palabra = "  hola"
+palabra = palabra.strip()
+print(palabra)  # hola
+
+# c. Invertir mayúsculas y minúsculas: "HoLa" -> "hOlA"
+palabra = "HoLa"
+palabra = palabra.swapcase()
+print(palabra)  # hOlA
+
+# d. Poner la primera letra en mayúscula: "hola" -> "Hola"
+palabra = "hola"
+palabra = palabra.capitalize()
+print(palabra)  # Hola
+
+# 4. ¿Qué hacen estos métodos? Ejemplos:
+texto = "banana"
+# count(subcadena) cuenta cuántas veces aparece la subcadena.
+print(texto.count("an"))  # 2
+# find(subcadena) devuelve el índice de la primera aparición.
+# Si no la encuentra, devuelve -1 (0 es una posición válida).
+print(texto.find("na"))  # 2
+print(texto.find("z"))   # -1
+
+# isdigit() devuelve True si todos los caracteres son dígitos y la cadena
+# no está vacía; en otro caso devuelve False.
+print("123".isdigit())  # True
+print("12a".isdigit())  # False
+
+# replace(viejo, nuevo) devuelve una cadena con las apariciones reemplazadas.
+print(texto.replace("a", "o"))  # bonono
 
 
-4. Explica qu� hacen los m�todos y da un ejemplo: (2 puntos)
- a. count() es cuantas veces aparece la misma letra o la misma palabra
- b. find() detector de posicion. dice donde empezo la letra y si no la encuentra te regresa desde 0 
- c. isdigit() revisa si lo que estas escribiendo es correcto o no dependiendo de lo que "preguntes" 
- d. replace() remplaza palabras 
+# 5. ¿Qué problema tiene declarar estas variables?
+# oración larga = "hola mundo"  # Incorrecto: el nombre contiene un espacio.
+# El nombre oración_larga sí es válido; el valor es "hola mundo".
+oración_larga = "hola mundo"
 
-5. Qu� problema tiene declarar estas variables? (1.5 puntos)
- oraci�n larga = 'hola mundo'aqui no puede haber espacios en el nombre, tendria que decir hola_mundo para que python lo pueda leer 
- palabra = 'hola' 'mundo' si no hay nada en medio los pega y diria "holamundo"
+# Dos cadenas contiguas se unen automáticamente. Para incluir un espacio,
+# hay que ponerlo en una de las cadenas.
+palabra = "hola" "mundo"
+print(palabra)  # holamundo
+palabra = "hola " "mundo"
+print(palabra)  # hola mundo
 
-6. Investigar "fstring": qu� son, c�mo se usan y un ejemplo. (2.5 puntos)
-Es la manera facil de poner las variables o numero sin tener que estar encerrandolos en comillas y se le pone una "f" antes de la comilla. como: f"hola (porfesor)" 
+# 6. ¿Qué son las f-strings? ¿Cómo se usan? Da un ejemplo.
+# Se escribe f antes de las comillas y las variables van entre llaves {}.
+profesor = "Alex"
+materia = "Python"
+mensaje = f"Hola, {profesor}. Hoy estudiaremos {materia}."
+print(mensaje)  # Hola, Alex. Hoy estudiaremos Python.
